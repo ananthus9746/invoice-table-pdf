@@ -1,0 +1,235 @@
+.invoice {
+    background-color: rgb(244, 244, 244);
+    min-height: 100vh;
+}
+
+.btn_container {
+    width: 100%;
+    max-width: 110vh;
+    /* background-color: rgb(182, 110, 110); */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+
+.dowloadPdfBtn {
+    margin-top: 50px;
+    float: right;
+    padding: 5px;
+    width: 120px;
+    border: 1px solid gray;
+    background-color: transparent;
+    border-radius: 5px;
+    color: rgb(65, 65, 65);
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.invoice-logo-brand{
+    color: rgb(58, 58, 58);
+    font-size: 20px;
+}
+.wrapper-invoice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.wrapper-invoice .invoice {
+    height: auto;
+    background: #fff;
+    padding: 5vh;
+    margin-top: 5vh;
+    max-width: 110vh;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+
+.wrapper-invoice .invoice .invoice-information {
+    float: right;
+    text-align: right;
+}
+
+.wrapper-invoice .invoice .invoice-information b {
+    color: "#0F172A";
+}
+
+.wrapper-invoice .invoice .invoice-information p {
+    font-size: 2vh;
+    color: gray;
+}
+
+.wrapper-invoice .invoice .invoice-logo-brand h2 {
+    text-transform: uppercase;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 2.9vh;
+    color: "#0F172A";
+}
+
+.wrapper-invoice .invoice .invoice-logo-brand img {
+    max-width: 100px;
+    width: 100%;
+    object-fit: fill;
+}
+
+.wrapper-invoice .invoice .invoice-head {
+    display: flex;
+    margin-top: 8vh;
+
+}
+
+.wrapper-invoice .invoice .invoice-head .head {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wrapper-invoice .invoice .invoice-head .client-info {
+    text-align: left;
+}
+
+.wrapper-invoice .invoice .invoice-head .client-info h2 {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: "#0F172A";
+}
+
+.wrapper-invoice .invoice .invoice-head .client-info p {
+    color: gray;
+}
+
+.wrapper-invoice .invoice .invoice-head .client-data {
+    text-align: right;
+
+    /* background-color: rebeccapurple; */
+}
+
+.wrapper-invoice .invoice .invoice-head .client-data h2 {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: "#0F172A";
+}
+
+.wrapper-invoice .invoice .invoice-head .client-data p {
+    color: gray;
+}
+
+.wrapper-invoice .invoice .invoice-body {
+    margin-top: 8vh;
+}
+
+.wrapper-invoice .invoice .invoice-body .table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wrapper-invoice .invoice .invoice-body .table thead tr th {
+    border: 1px solid #dcdcdc;
+    text-align: left;
+    padding: 1vh;
+    background-color: #0571a3;
+    color: white;
+    font-weight: 500;
+}
+
+.wrapper-invoice .invoice .invoice-body .table tbody tr td {
+    border: 1px solid #dcdcdc;
+    text-align: left;
+    padding: 1vh;
+    background-color: #fff;
+}
+
+.wrapper-invoice .invoice .invoice-body .table tbody tr td:nth-child(2) {
+    text-align: right;
+}
+
+.wrapper-invoice .invoice .invoice-body .flex-table {
+    display: flex;
+}
+
+.wrapper-invoice .invoice .invoice-body .flex-table .flex-column {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.wrapper-invoice .invoice .invoice-body .flex-table .flex-column .table-subtotal {
+    border-collapse: collapse;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 2vh;
+}
+
+.wrapper-invoice .invoice .invoice-body .flex-table .flex-column .table-subtotal tbody tr td {
+    border-bottom: 1px solid #dcdcdc;
+    text-align: left;
+    padding: 1vh;
+    background-color: #fff;
+}
+
+.wrapper-invoice .invoice .invoice-body .flex-table .flex-column .table-subtotal tbody tr td:nth-child(2) {
+    text-align: right;
+}
+
+.wrapper-invoice .invoice .invoice-body .invoice-total-amount {
+    margin-top: 1rem;
+}
+
+.wrapper-invoice .invoice .invoice-body .invoice-total-amount p {
+    font-weight: bold;
+    color: "#0F172A";
+    text-align: right;
+}
+
+.wrapper-invoice .invoice .invoice-footer {
+    margin-top: 4vh;
+}
+
+.wrapper-invoice .invoice .invoice-footer p {
+    font-size: 1.7vh;
+    color: gray;
+}
+
+@media only screen and (max-width: 900px) {
+    .dowloadPdfBtn {
+        margin-right: 5px;
+    }
+
+    .wrapper-invoice .invoice {
+        height: auto;
+        background: #fff;
+        padding: 5vh;
+        margin-top: 5vh;
+        max-width: 110vh;
+        width: 98%;
+        box-sizing: border-box;
+        border: 1px solid #cccccc;
+    }
+
+    .back_arrow {
+        margin-left: 5px;
+    }
+
+}
+
+@media only screen and (max-width:400px) {
+    .invoice-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* background-color: rebeccapurple; */
+    }
+
+    .wrapper-invoice .invoice .invoice-head .client-data {
+        text-align: left;
+        border-top: 1px solid rgba(128, 128, 128, 0.195);
+        padding-top: 20px;
+        margin-top: 20px;
+        /* background-color: rebeccapurple; */
+    }
+}

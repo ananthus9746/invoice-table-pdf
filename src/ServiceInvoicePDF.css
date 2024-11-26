@@ -1,0 +1,32 @@
+.pdf-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.pdf-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pdf-section {
+    margin-bottom: 20px;
+}
+
+.pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.pdf-table th,
+.pdf-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+}
+
+.pdf-comments {
+    font-size: 12px;
+    color: #555;
+}
