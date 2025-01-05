@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './ServiceForm.module.css'; // Import the CSS Module
 
 
 // Checklist extracted from the document
@@ -116,22 +117,35 @@ const checklist = [
   },
 ];
 
+
 const ServiceForm = () => {
+  
+  
   const [formData, setFormData] = useState(
     checklist.reduce((acc, section) => {
       section.items.forEach((item) => {
         acc[item] = {
-          okay: false, notOkay: false, adjusted: false, notChecked: false, comments: '', section: section.section  // Add the section here
-};
+          status: '', // Store the selected radio button status
+          comments: '',
+          section: section.section  // Add the section here
+        };
       });
       return acc;
     }, {})
   );
 
-  const handleCheckboxChange = (item, field) => {
+  const [extraData, setExtraData] = useState({
+    chasisNo: '',
+    vehicleModel: '',
+    date: '',
+    orderId: '',
+    invoice: ''
+  });
+
+  const handleRadioChange = (item, value) => {
     setFormData((prev) => ({
       ...prev,
-      [item]: { ...prev[item], [field]: !prev[item][field] },
+      [item]: { ...prev[item], status: value },
     }));
   };
 
@@ -142,64 +156,157 @@ const ServiceForm = () => {
     }));
   };
 
+  const handleExtraDataChange = (e) => {
+    const { name, value } = e.target;
+    setExtraData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+
+  useEffect(() => {
+    const container = document.getElementById('service-form-container'); // Ensure your container has this id
+    if (container) {
+      container.scrollTop = 0; // Scroll to the top of the specific container
+    }
+  }, []);
   return (
-    <div style={{ padding: '20px'}}>
+    <div style={{ padding: '20px' }} id="service-form-container">
       <h2>Service Checklist</h2>
-     
+
+      {/* New Input Fields */}
+      <div className={styles.vehicleDetails}>
+        <h3>Vehicle Details</h3>
+        <div className={styles.gridLayout}>
+          <label className={styles.label}>
+            Chasis No:
+            <input
+              type="text"
+              name="chasisNo"
+              value={extraData.chasisNo}
+              onChange={handleExtraDataChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.label}>
+            Vehicle Model:
+            <input
+              type="text"
+              name="vehicleModel"
+              value={extraData.vehicleModel}
+              onChange={handleExtraDataChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.label}>
+            Date:
+            <input
+              type="date"
+              name="date"
+              value={extraData.date}
+              onChange={handleExtraDataChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.label}>
+            Order ID:
+            <input
+              type="text"
+              name="orderId"
+              value={extraData.orderId}
+              onChange={handleExtraDataChange}
+              className={styles.inputField}
+            />
+          </label>
+          <label className={styles.label}>
+            Invoice:
+            <input
+              type="text"
+              name="invoice"
+              value={extraData.invoice}
+              onChange={handleExtraDataChange}
+              className={styles.inputField}
+            />
+          </label>
+        </div>
+      </div>
+
+      {/* Checklist */}
       {checklist.map((section) => (
         <div key={section.section} style={{ marginBottom: '20px' }}>
           <h3>{section.section}</h3>
           {section.items.map((item) => (
             <div key={item} style={{ marginBottom: '15px' }}>
               <p>{item}</p>
+
+              {/* Replace checkboxes with radio buttons */}
               <label>
                 <input
-                  type="checkbox"
-                  checked={formData[item].okay}
-                  onChange={() => handleCheckboxChange(item, 'okay')}
+                  type="radio"
+                  name={item}
+                  value="okay"
+                  checked={formData[item].status === 'okay'}
+                  onChange={() => handleRadioChange(item, 'okay')}
                 />{' '}
                 Inspected Okay
               </label>
               <label style={{ marginLeft: '10px' }}>
                 <input
-                  type="checkbox"
-                  checked={formData[item].notOkay}
-                  onChange={() => handleCheckboxChange(item, 'notOkay')}
+                  type="radio"
+                  name={item}
+                  value="notOkay"
+                  checked={formData[item].status === 'notOkay'}
+                  onChange={() => handleRadioChange(item, 'notOkay')}
                 />{' '}
                 Inspected Not Okay
               </label>
               <label style={{ marginLeft: '10px' }}>
                 <input
-                  type="checkbox"
-                  checked={formData[item].adjusted}
-                  onChange={() => handleCheckboxChange(item, 'adjusted')}
+                  type="radio"
+                  name={item}
+                  value="adjusted"
+                  checked={formData[item].status === 'adjusted'}
+                  onChange={() => handleRadioChange(item, 'adjusted')}
                 />{' '}
                 Repaired & Adjusted
               </label>
               <label style={{ marginLeft: '10px' }}>
                 <input
-                  type="checkbox"
-                  checked={formData[item].notChecked}
-                  onChange={() => handleCheckboxChange(item, 'notChecked')}
+                  type="radio"
+                  name={item}
+                  value="notChecked"
+                  checked={formData[item].status === 'notChecked'}
+                  onChange={() => handleRadioChange(item, 'notChecked')}
                 />{' '}
                 Not Checked
               </label>
+
               <textarea
                 placeholder="Comments / Parts List"
                 value={formData[item].comments}
                 onChange={(e) => handleCommentChange(item, e.target.value)}
-                style={{ display: 'block', marginTop: '5px', width: '100%' }}
+                className={styles.textarea}
               />
             </div>
           ))}
         </div>
       ))}
 
-      <Link to={"/invoice"}
-        style={{ textDecoration: "none", color: "blue" }} state={{ formData: formData }}>
+      {/* <Link
+        to={"/invoice"}
+        style={{ textDecoration: "none", color: "blue" }}
+        state={{ formData: formData, extraData: extraData }}
+      >
+        View Invoice
+      </Link> */}
+      <Link
+        to={"/invoice"}
+        style={{ textDecoration: "none", color: "blue" }}
+        state={{ formData: formData, extraData: extraData }}
+      >
         View Invoice
       </Link>
- 
     </div>
   );
 };

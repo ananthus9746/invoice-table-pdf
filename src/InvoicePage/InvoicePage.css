@@ -12,7 +12,34 @@
     align-items: flex-end;
 }
 
+.backBtn {
+    background-color: #2E1600;
+    /* Dark brown */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
 
+.backBtn:hover {
+    background-color: #170C00;
+    /* Slightly darker brown */
+}
+
+.downloadPdfBtn {
+    padding: 10px 20px;
+    background-color: rgb(2, 108, 246);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dowloadPdfBtn:disabled {
+    background-color: rgb(2, 108, 246);
+        cursor: not-allowed;
+}
 
 .dowloadPdfBtn {
     margin-top: 50px;
