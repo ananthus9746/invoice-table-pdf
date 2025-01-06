@@ -209,26 +209,8 @@ const ServiceForm = () => {
               className={styles.inputField}
             />
           </label>
-          <label className={styles.label}>
-            Order ID:
-            <input
-              type="text"
-              name="orderId"
-              value={extraData.orderId}
-              onChange={handleExtraDataChange}
-              className={styles.inputField}
-            />
-          </label>
-          <label className={styles.label}>
-            Invoice:
-            <input
-              type="text"
-              name="invoice"
-              value={extraData.invoice}
-              onChange={handleExtraDataChange}
-              className={styles.inputField}
-            />
-          </label>
+         
+        
         </div>
       </div>
 

@@ -46,12 +46,13 @@ function InvoicePage() {
             doc.text("Invoice Details", 10, 15);
 
             doc.setFontSize(12);
-            doc.text(`Order ID: ${extraData.orderId || ""}`, 10, 25);
-            doc.text(`Invoice #: ${extraData.invoice || ""}`, 10, 32);
-            doc.text(`Created Date: ${new Date().toLocaleDateString()}`, 10, 39);
+            const createdDate = extraData.date || new Date().toLocaleDateString();
+            doc.text(`Created Date: ${createdDate}`, 10, 39);
             doc.text(`Chasis No: ${extraData.chasisNo || ""}`, 10, 46);
             doc.text(`Vehicle Model: ${extraData.vehicleModel || ""}`, 10, 53);
-            doc.text(`Date: ${extraData.date || ""}`, 10, 60);
+
+
+            // doc.text(`Date: ${extraData.date || ""}`, 10, 60);
 
             // Add HR Line
             doc.setDrawColor(0);
@@ -132,12 +133,9 @@ function InvoicePage() {
                     </div>
 
                     <div className="invoice-information">
-                        <p><b>Order ID:</b> {extraData.orderId}</p>
-                        <p><b>Invoice #:</b> {extraData.invoice}</p>
-                        <p><b>Created Date:</b> {new Date().toLocaleDateString()}</p>
+                        <p><b>Created Date:</b>{extraData.date || new Date().toLocaleDateString()}</p>
                         <p><b>Chasis No:</b> {extraData.chasisNo}</p>
                         <p><b>Vehicle Model:</b> {extraData.vehicleModel}</p>
-                        <p><b>Date:</b> {extraData.date}</p>
                     </div>
 
                     <br />
@@ -146,7 +144,8 @@ function InvoicePage() {
                     <br />
                     <br />
                     <br />
-                    <br />                    <br />
+                    <br />                  
+                    <br />
                     <br />
 
 
