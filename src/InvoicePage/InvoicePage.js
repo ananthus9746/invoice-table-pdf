@@ -136,6 +136,8 @@ function InvoicePage() {
                         <p><b>Created Date:</b>{extraData.date || new Date().toLocaleDateString()}</p>
                         <p><b>Chasis No:</b> {extraData.chasisNo}</p>
                         <p><b>Vehicle Model:</b> {extraData.vehicleModel}</p>
+                        <p><b>Current Killometer Model:</b> </p>
+
                     </div>
 
                     <br />
